@@ -23,7 +23,7 @@ def main():
 
     train_loss_list = []
     train_acc_list = []
-    test_acc_list = []
+    # test_acc_list = []
 
     iter_per_epoch = max(train_size / batch_size, 1)
 
@@ -46,10 +46,13 @@ def main():
 
         if i % iter_per_epoch == 0:
             train_acc = network.accuracy(x_train, t_train)
-            test_acc = network.accuracy(x_test, t_test)
+            # test_acc = network.accuracy(x_test, t_test)
             train_acc_list.append(train_acc)
-            test_acc_list.append(test_acc)
-            print("acc at {} step: train={}, test={}".format(i, train_acc, test_acc))
+            # test_acc_list.append(test_acc)
+            print("acc at {} step: train={}".format(i, train_acc))
+    test_acc = network.accuracy(x_test, t_test)
+    print("acc of train={}".format(test_acc))
+
     ft = time.time()
     print(f"Elapsed time to train: {ft - st:.2f}.")
 
